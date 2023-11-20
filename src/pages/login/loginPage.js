@@ -1,8 +1,15 @@
 import { ErrorMessageStyled, StyledButton, StyledForm, StyledInput } from "components/formStyled"
 import { ErrorMessage, Formik } from "formik"
+import { Header } from "layout/LayoutStyled"
+import SignUpPage from "pages/signUp/signUpPage"
+import { Link, NavLink } from "react-router-dom"
 
 const LoginPage = ()=>{
     return(
+      <main>
+            <Header>
+            <NavLink to="/">Home</NavLink>
+        </Header>
         <div
         style={{
             display: 'flex',
@@ -28,8 +35,9 @@ const LoginPage = ()=>{
           <StyledButton type="submit">Submit</StyledButton>
             </StyledForm>
         </Formik>
-
+<Link to='/register'>Don't have an account?</Link>
         </div>
+        </main>
     )
 }
 export default LoginPage

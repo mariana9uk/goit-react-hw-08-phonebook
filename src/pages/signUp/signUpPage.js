@@ -1,9 +1,15 @@
 
 import { ErrorMessageStyled, StyledButton, StyledForm, StyledInput } from "components/formStyled"
 import { ErrorMessage, Formik } from "formik"
+import { Header } from "layout/LayoutStyled"
+import { Link, NavLink } from "react-router-dom"
 
 const SignUpPage = ()=>{
     return(
+        <main>
+        <Header>
+        <NavLink to="/">Home</NavLink>
+    </Header>
         <div>
  <Formik
             initialValues={{email:'',
@@ -22,8 +28,9 @@ const SignUpPage = ()=>{
           <StyledButton type="submit">Submit</StyledButton>
             </StyledForm>
         </Formik>
-
+        <Link to='/login'>Already have an account?</Link>
         </div>
+        </main>
     )
 }
 export default SignUpPage
