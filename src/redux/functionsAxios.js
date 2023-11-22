@@ -1,12 +1,15 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-axios.defaults.baseURL = 'https://653d4ae8f52310ee6a9a14ef.mockapi.io';
+// axios.defaults.baseURL = 'https://653d4ae8f52310ee6a9a14ef.mockapi.io';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com'
 
 export const fetchContacts = async () => {
   try {
     const responce = await axios.get(`/contacts`);
-    return responce.data;
+    console.log(responce.data)
+    return responce.data
+   
   } catch (error) {
     toast("Error!")
   }
@@ -27,3 +30,12 @@ export const deleteContact = async id => {
    toast("Error!")
   }
 };
+export const signUpRequest= async (body)=>{
+  try {
+    const responce = await axios.post('/users/signup', body);
+    return responce.data
+  } catch (error) {
+    console.log(error)
+    toast("Error!")
+  }
+}
