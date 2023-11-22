@@ -36,6 +36,6 @@ export const signUpRequest= async (body)=>{
     return responce.data
   } catch (error) {
     console.log(error)
-    toast("Error!")
+  
   }
 }
