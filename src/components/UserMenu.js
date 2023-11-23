@@ -1,7 +1,7 @@
-const UserMenu=({currentUser})=>{
+const UserMenu=()=>{
     return(
         <div>
-  <p>{currentUser.email}</p>
+  <p>Email</p>
   <button>Logout</button>
 </div>
     )

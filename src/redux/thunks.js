@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { addContact, deleteContact, fetchContacts } from './functionsAxios';
+import { addContact, deleteContact, fetchContacts, signUpRequest } from './functionsAxios';
 export const getContactsThunk = createAsyncThunk(
   'contacts/fetchAll',
   async () => {
@@ -15,3 +15,7 @@ export const deleteContactThunk = createAsyncThunk(
   'contacts/deleteContact',
   id => deleteContact(id)
 );
+export const signUpThunk = createAsyncThunk(
+  'auth/register', userData => signUpRequest(userData)
+  
+)
