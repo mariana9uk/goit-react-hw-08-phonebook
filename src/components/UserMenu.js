@@ -1,7 +1,7 @@
-const UserMenu=()=>{
+const UserMenu=({currentUser})=>{
     return(
         <div>
-  <p>mango@mail.com</p>
+  <p>{currentUser.email}</p>
   <button>Logout</button>
 </div>
     )

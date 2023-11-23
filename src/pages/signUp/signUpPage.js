@@ -43,9 +43,9 @@ const SignUpPage = () => {
   };
   return (
     <main>
-      <Header>
+      {/* <Header>
         <NavLink to="/">Home</NavLink>
-      </Header>
+      </Header> */}
       <div>
         <Formik
           initialValues={{ name: '', email: '', password: '' }}

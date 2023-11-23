@@ -7,9 +7,9 @@ import { Link, NavLink } from "react-router-dom"
 const LoginPage = ()=>{
     return(
       <main>
-            <Header>
+            {/* <Header>
             <NavLink to="/">Home</NavLink>
-        </Header>
+        </Header> */}
         <div
         style={{
             display: 'flex',

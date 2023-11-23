@@ -8,6 +8,7 @@ import LoginPage from 'pages/login/loginPage';
 import SignUpPage from 'pages/signUp/signUpPage';
 import ContactsPage from 'pages/contactsPage/contactsPage';
 import Home from 'pages/Home';
+import Layout from 'layout/layout';
 
 export const App = () => {
   return (
@@ -21,13 +22,13 @@ export const App = () => {
       }}
     >
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        {/* <Route index element={<Home />} /> */}
+        <Route path='/' element={<Layout/>}>
+        <Route index element={<Home />} />
      <Route path='/login' element={<LoginPage/>}/>
      <Route path='/register' element={<SignUpPage/>}/>
      <Route path='/contacts' element={<ContactsPage/>}/>
      <Route path="*" element={<Home />} />
-    
+</Route>    
   
       </Routes>
       {/* <ContactsPage/> */}

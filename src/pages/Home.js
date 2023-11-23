@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom"
 const Home = ()=>{
     return(
         <main>
-        <Header>
+        {/* <Header>
         <NavLink to="/register">SignUp</NavLink>
                 <NavLink to="/login">Login</NavLink>
-        </Header>
+        </Header> */}
                
         <div>
             <h1>Phonebook</h1>
