@@ -13,6 +13,8 @@ const handlePending = (state, action)=>{
 }
 const handleFulfilled = (state, action)=>{
     state.isLoading=false;
+    state.user=action.payload.user;
+    
 }
 const handleRejected= (state, action)=>{
     state.isLoading=false;
@@ -29,3 +31,5 @@ extraReducers: builder => {
     .addCase(signUpThunk.rejected, handleRejected)
 }
 })
+
+export const authReducer = authSlice.reducer

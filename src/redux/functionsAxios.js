@@ -29,12 +29,12 @@ export const deleteContact = async id => {
     toast('Error!');
   }
 };
-export const signUpRequest = async (body, thunkAPI ) => {
-  try {
+export const signUpRequest = async (body) => {
+  // try {
     const responce = await axios.post('/users/signup', body);
     return responce.data;
-  } catch (error) {
-    console.log(error);
-    return thunkAPI.rejectWithValue(error.message)
-  }
+  // } catch (error) {
+  //   console.log(error);
+    // return thunkAPI.rejectWithValue(error.message)
+  // }
 };

@@ -6,9 +6,11 @@ import {
 } from 'components/formStyled';
 import { ErrorMessage, Formik } from 'formik';
 import { Header } from 'layout/LayoutStyled';
+import { useDispatch } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { signUpRequest } from 'redux/functionsAxios';
+import { signUpThunk } from 'redux/thunks';
 import * as Yup from 'yup';
 
 const validSchema = Yup.object().shape({
@@ -28,24 +30,24 @@ const validSchema = Yup.object().shape({
   });
 
 const SignUpPage = () => {
+  const dispatch = useDispatch()
   const navigate = useNavigate();
   const handleSubmit = (newUserValues, formikBag) => {
-    signUpRequest(newUserValues);
-    const responce = signUpRequest(newUserValues);
-    console.log(responce)
-    if (responce.ok) {
-        formikBag.resetForm();
-      navigate('/login');
+    dispatch(signUpThunk(newUserValues))}
+  //   signUpRequest(newUserValues);
+  //   const responce = signUpRequest(newUserValues);
+
+  //   console.log(responce)
+  //   if (responce.ok) {
+  //       formikBag.resetForm();
+  //     navigate('/login');
      
-    } else {
-        toast('Error!');
-    }
-  };
+  //   } else {
+  //       toast('Error!');
+  //   }
+  // };
   return (
     <main>
-      {/* <Header>
-        <NavLink to="/">Home</NavLink>
-      </Header> */}
       <div>
         <Formik
           initialValues={{ name: '', email: '', password: '' }}

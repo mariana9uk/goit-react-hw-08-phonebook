@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
   return (
     <div>
       <NavLink to="/register">SignUp</NavLink>
+      /
       <NavLink to="/login">Login</NavLink>
     </div>
   );

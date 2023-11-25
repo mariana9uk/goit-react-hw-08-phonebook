@@ -1,16 +1,20 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Header } from './LayoutStyled';
-import AuthNavigation from './authNav';
+import AuthNavigation from '../components/authNav';
 import UserMenu from 'components/UserMenu';
+import { selectAuth } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 const Layout = () => {
+  const {isLoggedIn, isLoading}= useSelector(selectAuth) 
+
   return (
 
 <main> 
       <Header>
         <NavLink to="/">Home</NavLink>
-        <AuthNavigation />
-        <UserMenu/>
-      </Header>
+        {isLoggedIn ? <UserMenu/> : <AuthNavigation />}
+       
+        </Header>
       <Outlet />
     </main>
   );
