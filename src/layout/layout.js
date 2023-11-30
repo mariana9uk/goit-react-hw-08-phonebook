@@ -4,6 +4,7 @@ import AuthNavigation from '../components/authNav';
 import UserMenu from 'components/UserMenu';
 import { selectAuth } from 'redux/selectors';
 import { useSelector } from 'react-redux';
+import { Navigation } from 'components/Navigation';
 const Layout = () => {
   const {isLoggedIn, isLoading}= useSelector(selectAuth) 
 
@@ -11,7 +12,8 @@ const Layout = () => {
 
 <main> 
       <Header>
-        <NavLink to="/">Home</NavLink>
+        <Navigation/>
+        {/* <NavLink to="/">Home</NavLink> */}
         {isLoggedIn ? <UserMenu/> : <AuthNavigation />}
        
         </Header>

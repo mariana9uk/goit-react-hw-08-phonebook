@@ -2,9 +2,20 @@ import { ErrorMessageStyled, StyledButton, StyledForm, StyledInput } from "compo
 import { ErrorMessage, Formik } from "formik"
 import { Header } from "layout/LayoutStyled"
 import SignUpPage from "pages/signUp/signUpPage"
-import { Link, NavLink } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { Link, NavLink, useNavigate } from "react-router-dom"
+import { ToastContainer } from "react-toastify"
+import { loginThunk } from "redux/authOperations"
+
 
 const LoginPage = ()=>{
+  const dispatch=useDispatch()
+  const navigate = useNavigate()
+  const handleSubmit = (userValues, formikBag)=>{
+    dispatch(loginThunk(userValues))
+    formikBag.resetForm()
+    // navigate('/contacts')
+  }
     return(
       <main>
             {/* <Header>
@@ -20,7 +31,8 @@ const LoginPage = ()=>{
           }}>
             <Formik
             initialValues={{email:'',
-        password:'',}}>
+        password:'',}}
+        onSubmit={handleSubmit}>
             <StyledForm>
                 <label>
                     <h3>Email</h3>
@@ -36,6 +48,7 @@ const LoginPage = ()=>{
             </StyledForm>
         </Formik>
 <Link to='/register'>Don't have an account?</Link>
+<ToastContainer/>
         </div>
         </main>
     )

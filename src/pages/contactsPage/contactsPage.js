@@ -9,10 +9,7 @@ const { ToastContainer } = require("react-toastify")
 const ContactsPage=()=>{
     return(
         <main>
-        <Header>
-            <UserMenu/>
-        </Header>
-        <div>
+              <div>
             <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>

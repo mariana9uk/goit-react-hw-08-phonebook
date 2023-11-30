@@ -9,9 +9,24 @@ import SignUpPage from 'pages/signUp/signUpPage';
 import ContactsPage from 'pages/contactsPage/contactsPage';
 import Home from 'pages/Home';
 import Layout from 'layout/layout';
+import { ContactsList } from './ContactsList';
+import { ContactsListPage } from 'pages/contactsList/contactsListPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuth } from 'redux/selectors';
+import { useEffect } from 'react';
+import { refreshThunk } from 'redux/authOperations';
 
 export const App = () => {
+  const dispatch = useDispatch()
+  const {isRefreshing}=useSelector(selectAuth)
+
+  useEffect(()=>{
+    dispatch(refreshThunk())
+  },[dispatch])
+
   return (
+    isRefreshing ? ("Loading"): 
+    (
     <div
       style={{
         // display: 'flex',
@@ -27,6 +42,7 @@ export const App = () => {
      <Route path='/login' element={<LoginPage/>}/>
      <Route path='/register' element={<SignUpPage/>}/>
      <Route path='/contacts' element={<ContactsPage/>}/>
+     {/* <Route path='/contactslist' element={<ContactsListPage/>}/> */}
      <Route path="*" element={<Home />} />
 </Route>    
   
@@ -38,6 +54,6 @@ export const App = () => {
       <Filter />
       <ContactsList />
       <ToastContainer/> */}
-    </div>
+    </div>)
   );
 };

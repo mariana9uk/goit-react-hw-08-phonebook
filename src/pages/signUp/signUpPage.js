@@ -5,12 +5,12 @@ import {
   StyledInput,
 } from 'components/formStyled';
 import { ErrorMessage, Formik } from 'formik';
-import { Header } from 'layout/LayoutStyled';
 import { useDispatch } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import { signUpRequest } from 'redux/functionsAxios';
-import { signUpThunk } from 'redux/thunks';
+import { signUpThunk } from 'redux/authOperations';
+
+
 import * as Yup from 'yup';
 
 const validSchema = Yup.object().shape({
@@ -23,17 +23,20 @@ const validSchema = Yup.object().shape({
         'Name may contain only letters, apostrophe, dash and spaces.'
       ),
     // email: Yup.string().email('Invalid email').required('Required'),
-    // password: Yup.string()
-    // .min(7, 'Too Short!')
-    // .max(50, 'Too Long!')
-    // .required('Required'),
+    password: Yup.string()
+    .min(7, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required'),
   });
 
 const SignUpPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const handleSubmit = (newUserValues, formikBag) => {
-    dispatch(signUpThunk(newUserValues))}
+    dispatch(signUpThunk(newUserValues))
+    formikBag.resetForm();
+        // navigate('/contacts')
+  }
   //   signUpRequest(newUserValues);
   //   const responce = signUpRequest(newUserValues);
 
@@ -48,7 +51,14 @@ const SignUpPage = () => {
   // };
   return (
     <main>
-      <div>
+      <div
+       style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: '#010101',
+      }}>
         <Formik
           initialValues={{ name: '', email: '', password: '' }}
           validationSchema={validSchema}
