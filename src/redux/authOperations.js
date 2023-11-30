@@ -41,7 +41,7 @@ export const loginThunk = createAsyncThunk(
     try {
       const responce = await axios.post('/users/login', userData);
       setAuthHeader(responce.data.token);
-      toast.success(`Welcome, ${responce.data.user.name}!`);
+    //   toast.success(`Welcome, ${responce.data.user.name}!`);
       return responce.data;
     } catch (error) {
       console.log(error);
