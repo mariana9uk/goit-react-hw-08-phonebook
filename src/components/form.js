@@ -34,7 +34,7 @@ export const ContactForm = () => {
 
   const handleSubmit = (values, formikBag) => {
     const isContactExists = items.find(
-      contact => contact.contact.contact.name.toLowerCase() === values.name.toLowerCase()
+      contact => contact.name.toLowerCase() === values.name.toLowerCase()
     );
     if (isContactExists) {
       toast(`Contact with name '${values.name}' already exists!`);

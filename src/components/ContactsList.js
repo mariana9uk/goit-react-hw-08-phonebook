@@ -3,8 +3,9 @@ import { StyledContacts } from './ContactsStyleed';
 import { deleteContactThunk, getContactsThunk } from 'redux/thunks';
 import { useEffect } from 'react';
 import { getContacts } from 'redux/selectors';
-import { ToastContainer} from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const ContactsList = () => {
   const dispatch = useDispatch();
   const filtered = useSelector(state => state.filters);
@@ -14,12 +15,12 @@ export const ContactsList = () => {
   }, [dispatch]);
   if (!items || items.length === 0) return;
   const filteredContacts = items.filter(contact =>
-    contact.contact.contact.name.toLowerCase().includes(filtered.toLowerCase())
+    contact.name.toLowerCase().includes(filtered.toLowerCase())
   );
-  
+
   const contactsListItems = filteredContacts.map(contact => (
     <li key={contact.id}>
-      {contact.contact.contact.name}:{contact.contact.contact.number}
+      {contact.name}:{contact.number}
       <button
         type="button"
         onClick={() => dispatch(deleteContactThunk(contact.id))}
@@ -35,7 +36,7 @@ export const ContactsList = () => {
         {error && <b>{error}</b>}
       </div>
       <StyledContacts>{contactsListItems}</StyledContacts>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };
