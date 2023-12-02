@@ -22,11 +22,15 @@ const validSchema = Yup.object().shape({
         /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
         'Name may contain only letters, apostrophe, dash and spaces.'
       ),
-    // email: Yup.string().email('Invalid email').required('Required'),
-    password: Yup.string()
+    email: Yup.string()
+    .required('Required'),
+    
+    password: Yup.string(0-9)
     .min(7, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Required')
+    .mactches()
+    ,
   });
 
 const SignUpPage = () => {
