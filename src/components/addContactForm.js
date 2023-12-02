@@ -7,7 +7,7 @@ import {
 } from './formStyled';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactThunk } from 'redux/thunks';
+import { addContactThunk } from 'redux/contactsOperations';
 import { getContacts } from 'redux/selectors';
 import { toast } from 'react-toastify';
 

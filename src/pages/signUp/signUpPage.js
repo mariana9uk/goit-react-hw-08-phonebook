@@ -5,10 +5,11 @@ import {
   StyledInput,
 } from 'components/formStyled';
 import { ErrorMessage, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { signUpThunk } from 'redux/authOperations';
+import { selectAuth, selectUser } from 'redux/selectors';
 
 
 import * as Yup from 'yup';
@@ -29,31 +30,23 @@ const validSchema = Yup.object().shape({
     .min(7, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required')
-    .mactches()
     ,
   });
 
 const SignUpPage = () => {
+  const{name}= useSelector(selectUser)
   const dispatch = useDispatch()
   const navigate = useNavigate();
   const handleSubmit = (newUserValues, formikBag) => {
     dispatch(signUpThunk(newUserValues))
-    formikBag.resetForm();
-        // navigate('/contacts')
-  }
-  //   signUpRequest(newUserValues);
-  //   const responce = signUpRequest(newUserValues);
 
-  //   console.log(responce)
-  //   if (responce.ok) {
-  //       formikBag.resetForm();
-  //     navigate('/login');
-     
-  //   } else {
-  //       toast('Error!');
-  //   }
-  // };
-  return (
+      console.log(name)
+      if (name===null) {
+            return }
+  //  toast.success(`User ${newUserValues.name} created!`)
+        formikBag.resetForm();  
+  }
+   return (
     <main>
       <div
        style={{

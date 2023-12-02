@@ -8,13 +8,15 @@ import LoginPage from 'pages/login/loginPage';
 import SignUpPage from 'pages/signUp/signUpPage';
 import ContactsPage from 'pages/contactsPage/contactsPage';
 import Home from 'pages/Home';
-import Layout from 'layout/layout';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth } from 'redux/selectors';
 import { useEffect } from 'react';
 import { refreshThunk } from 'redux/authOperations';
 import { RestrictedRoute } from './RestrictedRout';
 import {PrivateRoute} from './PrivateRoute'
+import { ToastContainer } from 'react-toastify';
+import { Layout } from 'layout/layout';
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useSelector(selectAuth);
@@ -63,6 +65,7 @@ export const App = () => {
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
+      <ToastContainer/>
     </div>
   );
 };
