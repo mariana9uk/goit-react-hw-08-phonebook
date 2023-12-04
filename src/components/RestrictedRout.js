@@ -5,7 +5,8 @@ export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
   const location = useLocation();
   const { isLoggedIn } = useSelector(selectAuth);
   return isLoggedIn ? (
-    <Navigate to={location.state.from || redirectTo} />
+    // <Navigate to={location.state.from || redirectTo} />
+    <Navigate to={ redirectTo} />
   ) : (
     Component
   );
