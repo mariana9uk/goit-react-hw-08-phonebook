@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigation } from './Navigation';
+// import { Navigation } from './Navigation';
 import { selectAuth } from 'redux/selectors';
-import UserMenu from './UserMenu';
-import AuthNavigation from './authNav';
+// import UserMenu from './UserMenu';
+// import AuthNavigation from './authNav';
 import {
   AppBar,
-  Avatar,
+  
   Box,
   Button,
   Container,
@@ -13,7 +13,7 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Tooltip,
+ 
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
@@ -22,13 +22,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import { PhoneIphone } from '@mui/icons-material';
 import { logoutThunk } from 'redux/authOperations';
-const pagesPublic = ['Home', 'Login'];
-const pages = ['Home', 'Contacts',];
+const pagesPublic = ['Home'];
+const pages = ['Home', 'Contacts'];
 // const settings = [];
 
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const { isLoggedIn, isLoading, user } = useSelector(selectAuth);
+  const { isLoggedIn, user } = useSelector(selectAuth);
   const dispatch = useDispatch();
   const handleLogOutClick = () => {
     dispatch(logoutThunk());
@@ -45,15 +45,14 @@ export const Header = () => {
   };
   const handleCloseBurger = () => {
     setAnchorElNav(null);
-
   };
   const handleLoginClick = () => {
     navigate('/login');
   };
 
-  const handleContactsShow =()=>{
-    navigate('/contacts')
-  }
+  const handleContactsShow = () => {
+    navigate('/contacts');
+  };
   return (
     <div>
       {/* <Navigation /> */}
@@ -105,89 +104,82 @@ export const Header = () => {
                   horizontal: 'left',
                 }}
                 open={Boolean(anchorElNav)}
-                onClose={handleCloseBurger }
+                onClose={handleCloseBurger}
                 sx={{
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-               { isLoggedIn? pages.map(page => (
-                  <MenuItem key={page} onClick={()=>handleCloseNavMenu(page)}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))
-                :
-                    pagesPublic.map(page => (
-                  <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+                {isLoggedIn
+                  ? pages.map(page => (
+                      <MenuItem
+                        key={page}
+                        onClick={() => handleCloseNavMenu(page)}
+                      >
+                        <Typography textAlign="center">{page}</Typography>
+                      </MenuItem>
+                    ))
+                  : pagesPublic.map(page => (
+                      <MenuItem
+                        key={page}
+                        onClick={() => handleCloseNavMenu(page)}
+                      >
+                        <Typography textAlign="center">{page}</Typography>
+                      </MenuItem>
+                    ))}
               </Menu>
             </Box>
             <PhoneIphone sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >{user.name}</Typography>
+
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {isLoggedIn?
-              pages.map(page => (
-                <Button
-                  role="link"
-                  key={page}
-                  onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-                
-              ))
-              :
-             pagesPublic.map(page => (
-                <Button
-                  role="link"
-                  key={page}
-                  onClick={() => handleCloseNavMenu(page)}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-                ))           
-            }
-                     
+              {isLoggedIn
+                ? pages.map(page => (
+                    <Button
+                      role="link"
+                      key={page}
+                      onClick={() => handleCloseNavMenu(page)}
+                      sx={{ my: 2, color: 'white', display: 'block' }}
+                    >
+                      {page}
+                    </Button>
+                  ))
+                : pagesPublic.map(page => (
+                    <Button
+                      role="link"
+                      key={page}
+                      onClick={() => handleCloseNavMenu(page)}
+                      sx={{ my: 2, color: 'white', display: 'block' }}
+                    >
+                      {page}
+                    </Button>
+                  ))}
             </Box>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {isLoggedIn?
-             <Button
-             onClick={handleLogOutClick}
-             sx={{ my: 2, color: 'white', display: 'block' }}
-           >
-             Logout
-           </Button>
-              :
-           <Button
-              role="link"
-              //   key={login}
-              onClick={handleLoginClick}
-              sx={{ my: 2, color: 'white', display: 'block' }}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'none', md: 'flex', justifyContent: 'flex-end' },
+              }}
             >
-              Login
-            </Button>
-            }
-            
-              </Box>
-              
+              <Typography align="center" display="flex" alignItems="center">
+                {isLoggedIn ? user.name : ''}
+              </Typography>
+              {isLoggedIn ? (
+                <Button
+                  onClick={handleLogOutClick}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Logout
+                </Button>
+              ) : (
+                <Button
+                  role="link"
+                  //   key={login}
+                  onClick={handleLoginClick}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  Login
+                </Button>
+              )}
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
