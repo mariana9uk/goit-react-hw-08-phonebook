@@ -1,11 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-// import { Navigation } from './Navigation';
 import { selectAuth } from 'redux/selectors';
-// import UserMenu from './UserMenu';
-// import AuthNavigation from './authNav';
 import {
   AppBar,
-  
   Box,
   Button,
   Container,
@@ -13,19 +9,15 @@ import {
   Menu,
   MenuItem,
   Toolbar,
- 
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-// import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useNavigate } from 'react-router-dom';
 import { PhoneIphone } from '@mui/icons-material';
 import { logoutThunk } from 'redux/authOperations';
 const pagesPublic = ['Home'];
 const pages = ['Home', 'Contacts'];
-// const settings = [];
-
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const { isLoggedIn, user } = useSelector(selectAuth);
@@ -50,9 +42,9 @@ export const Header = () => {
     navigate('/login');
   };
 
-  const handleContactsShow = () => {
-    navigate('/contacts');
-  };
+  // const handleContactsShow = () => {
+  //   navigate('/contacts');
+  // };
   return (
     <div>
       {/* <Navigation /> */}
@@ -63,22 +55,6 @@ export const Header = () => {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <PhoneIphone sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-
-            {/* <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            ></Typography> */}
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
@@ -172,7 +148,6 @@ export const Header = () => {
               ) : (
                 <Button
                   role="link"
-                  //   key={login}
                   onClick={handleLoginClick}
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >

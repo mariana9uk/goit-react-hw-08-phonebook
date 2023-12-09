@@ -1,16 +1,11 @@
 import { Box, Button, Container, CssBaseline, Typography } from '@mui/material';
-import {
-  ErrorMessageStyled,
-  StyledButton,
-  StyledForm,
-  StyledInput,
-} from 'components/formStyled';
+import { ErrorMessageStyled, StyledInput } from 'components/formStyled';
 import { ErrorMessage, Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import { signUpThunk } from 'redux/authOperations';
-import { selectAuth, selectUser } from 'redux/selectors';
+import { selectUser } from 'redux/selectors';
 
 import * as Yup from 'yup';
 

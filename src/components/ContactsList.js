@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledContacts } from './ContactsStyleed';
-
 import { useEffect } from 'react';
 import { getContacts } from 'redux/selectors';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { deleteContactThunk, getContactsThunk } from 'redux/contactsOperations';
-import { Box, Button, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
+import { Box, Button, List, ListItemText, Typography } from '@mui/material';
 
 export const ContactsList = () => {
   const dispatch = useDispatch();
@@ -23,49 +21,37 @@ export const ContactsList = () => {
   );
 
   const contactsListItems = filteredContacts.map(contact => (
-    
     <li key={contact.id} alignItems="flex-start">
-       <Box
-         height="100%"
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              gap:'50px',
-              alignItems:"center"
-            }}
-          >
-            {/* <Typography
-              variant="overline text"
-              fontWeight="medium"
-              fontSize="20px"
-              align="center"
-              color="#616161"
-                        > */}<ListItemText>
-                           <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="#616161"
-              >
-      {contact.name}:{contact.number}
-      </Typography>
-      </ListItemText>
-      <Button
-      margin='0px'
-        variant="contained"
-        type="button"
-        onClick={() => dispatch(deleteContactThunk(contact.id))}
-        sx={{ marginTop:'0', marginBottom:'0px', my: 2, color: 'white' }}
-        size="small"
+      <Box
+        height="100%"
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          gap: '50px',
+          alignItems: 'center',
+        }}
       >
-        {/* <button
-        type="button"
-        onClick={() => dispatch(deleteContactThunk(contact.id))}
-      > */}
-        Delete
-      </Button>
-      {/* // </button> */}
+        <ListItemText>
+          <Typography
+            sx={{ display: 'inline' }}
+            component="span"
+            variant="body2"
+            color="#616161"
+          >
+            {contact.name}:{contact.number}
+          </Typography>
+        </ListItemText>
+        <Button
+          margin="0px"
+          variant="contained"
+          type="button"
+          onClick={() => dispatch(deleteContactThunk(contact.id))}
+          sx={{ marginTop: '0', marginBottom: '0px', my: 2, color: 'white' }}
+          size="small"
+        >
+          Delete
+        </Button>
       </Box>
     </li>
   ));

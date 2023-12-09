@@ -1,10 +1,5 @@
 import { Formik, ErrorMessage, Form } from 'formik';
-import {
-  StyledForm,
-  StyledInput,
-  StyledButton,
-  ErrorMessageStyled,
-} from './formStyled';
+import { StyledInput, ErrorMessageStyled } from './formStyled';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContactThunk } from 'redux/contactsOperations';

@@ -1,6 +1,4 @@
 import { Box, Container, CssBaseline, Typography } from '@mui/material';
-// import UserMenu from 'components/UserMenu';
-// import { Header } from 'layout/LayoutStyled';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getContactsThunk } from 'redux/contactsOperations';
@@ -25,7 +23,6 @@ const ContactsPage = () => {
             gap: { xs: '20px', md: '150px' },
             bgcolor: '#cfe8fc',
             justifyContent: 'center',
-            
           }}
         >
           <Box
@@ -46,15 +43,15 @@ const ContactsPage = () => {
             >
               Create a new contact
             </Typography>
-            {/* <h1>Phonebook</h1> */}
+
             <ContactForm />
           </Box>
           <Box
             sx={{
               display: 'flex',
               flexDirection: 'column',
-             
-              alignItems: 'center'
+
+              alignItems: 'center',
             }}
           >
             <Typography
@@ -68,12 +65,10 @@ const ContactsPage = () => {
             >
               Your contacts
             </Typography>
-            {/* <h2>Contacts</h2> */}
-
             <Filter />
             <ContactsList />
           </Box>
-          </Box>
+        </Box>
         <ToastContainer />
       </Container>
     </main>

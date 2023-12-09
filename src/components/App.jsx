@@ -1,20 +1,14 @@
-// import { ContactForm } from './form';
-// import { ContactsList } from './ContactsList';
-// import { Filter } from './Filter';
-// import { ToastContainer } from 'react-toastify';
 import { Route, Routes } from 'react-router-dom';
-// import Layout from 'layout/layout';
 import LoginPage from 'pages/login/loginPage';
 import SignUpPage from 'pages/signUp/signUpPage';
 import ContactsPage from 'pages/contactsPage/contactsPage';
 import Home from 'pages/Home';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth } from 'redux/selectors';
 import { useEffect } from 'react';
 import { refreshThunk } from 'redux/authOperations';
 import { RestrictedRoute } from './RestrictedRout';
-import {PrivateRoute} from './PrivateRoute'
+import { PrivateRoute } from './PrivateRoute';
 import { ToastContainer } from 'react-toastify';
 import { Layout } from 'layout/layout';
 export const App = () => {
@@ -28,17 +22,7 @@ export const App = () => {
   return isRefreshing ? (
     'Loading'
   ) : (
-    <div
-      style={
-        {
-          // display: 'flex',
-          // flexDirection: 'column',
-          // justifyContent: 'center',
-          // alignItems: 'center',
-          // color: '#cfe8fc',
-        }
-      }
-    >
+    <div style={{}}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -60,12 +44,16 @@ export const App = () => {
               />
             }
           />
-          <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage />}/>
-          } />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
+          />
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

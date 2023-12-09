@@ -45,7 +45,7 @@ const handleFulfilledRefresh = (state, action) => {
 };
 const handleRejctedRefresh = (state, action) => {
   state.isLoading = false;
-  
+
   state.isRefreshing = false;
 };
 
@@ -65,7 +65,7 @@ export const authSlice = createSlice({
       .addCase(logoutThunk.rejected, handleRejected)
       .addCase(refreshThunk.pending, handlePendingRefreshing)
       .addCase(refreshThunk.fulfilled, handleFulfilledRefresh)
-      .addCase(refreshThunk.rejected, handleRejctedRefresh );
+      .addCase(refreshThunk.rejected, handleRejctedRefresh);
   },
 });
 

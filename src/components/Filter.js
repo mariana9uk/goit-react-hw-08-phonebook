@@ -10,24 +10,23 @@ export const Filter = () => {
   return (
     <div>
       <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-            }}
-          >
-             <Typography
-              variant="h4"
-              fontWeight="medium"
-              fontSize="25px"
-              align="center"
-              color="#616161"
-              marginBottom="5px"
-            >
-              Find contact by name
-            </Typography>
-      {/* <h3>Find contacts by name</h3> */}
-      <input type="text" onChange={handleChange} />
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography
+          variant="h4"
+          fontWeight="medium"
+          fontSize="25px"
+          align="center"
+          color="#616161"
+          marginBottom="5px"
+        >
+          Find contact by name
+        </Typography>
+        <input type="text" onChange={handleChange} />
       </Box>
     </div>
   );
