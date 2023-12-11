@@ -32,11 +32,11 @@ export const loginThunk = createAsyncThunk(
     try {
       const responce = await axios.post('/users/login', userData);
       setAuthHeader(responce.data.token);
-      //   toast.success(`Welcome, ${responce.data.user.name}!`);
+        toast.success(`Welcome, ${responce.data.user.name}!`);
       return responce.data;
     } catch (error) {
       console.log(error);
-      toast.error(error);
+      toast.error('Some details are wrong, please check your email or login')
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -64,8 +64,7 @@ export const refreshThunk = createAsyncThunk(
       const responce = await axios.get('/users/current');
       return responce.data;
     } catch (error) {
-      console.log(error);
-      return thunkAPI.rejectWithValue(error.message);
+        return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

@@ -1,10 +1,11 @@
 import { Box, Button, Container, CssBaseline, Typography } from '@mui/material';
 import { ErrorMessageStyled, StyledInput } from 'components/formStyled';
 import { ErrorMessage, Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { loginThunk } from 'redux/authOperations';
+import { selectUser } from 'redux/selectors';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -12,8 +13,14 @@ const LoginPage = () => {
   const handleSignupClick = () => {
     navigate('/register');
   };
+  // const{error, token}= useSelector(selectAuth)
+  const { email } = useSelector(selectUser);
   const handleSubmit = (userValues, formikBag) => {
     dispatch(loginThunk(userValues));
+
+    if (email === null) {
+      return;
+    }
     formikBag.resetForm();
     // navigate('/contacts')
   };

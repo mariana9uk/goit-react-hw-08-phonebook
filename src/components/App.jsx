@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import LoginPage from 'pages/login/loginPage';
 import SignUpPage from 'pages/signUp/signUpPage';
 import ContactsPage from 'pages/contactsPage/contactsPage';
@@ -50,7 +50,7 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<Navigate to={'/'}/>} />
         </Route>
       </Routes>
       <ToastContainer />
